@@ -4,7 +4,6 @@ import torch.nn.functional as F
 from torch.utils.data import DataLoader, Dataset
 
 
-# Fourier feature layer: encodes periodicity explicitly
 class FANFourierLayer(nn.Module):
     def __init__(self, input_dim, num_frequencies=16, output_dim=64):
         super().__init__()
@@ -20,7 +19,7 @@ class FANFourierLayer(nn.Module):
         out = self.linear(sin_cos).view(B, S, -1)  # (B, S, output_dim)
         return out
 
-# Rhythm generation model: predicts onsets and groove offsets
+
 class RhythmFAN(nn.Module):
     def __init__(self, input_dim, num_frequencies=16, hidden_dim=64):
         super().__init__()
